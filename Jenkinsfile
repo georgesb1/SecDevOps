@@ -7,7 +7,9 @@ pipeline {
             }
         }
         stage("Test"){
-            echo 'I should Put certains phase of Test here'
+            steps{
+                echo 'I should Put certains phase of Test here'
+            }
         }
     }
 }
