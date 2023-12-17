@@ -15,7 +15,7 @@ pipeline {
             steps{
                 git branch: 'main', credentialsId: 'Boss', url: 'https://github.com/georgesb1/SecDevOps.git'
                 sh 'pip install -r requirements.txt'
-                sh 'uvicorn main:app --host 0.0.0.0 --port 8000'
+                sh 'nohup uvicorn main:app --host 0.0.0.0 --port 8000 > app.log 2>&1 &'
             }
         }
     }
