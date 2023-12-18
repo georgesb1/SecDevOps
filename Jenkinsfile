@@ -1,7 +1,6 @@
 pipeline {
     agent any 
-    echo('access_token = "1584987" 
-password ="54+78"')
+    echo("access_token = '1584987' password ='54+78'")
     stages{
         stage("Checkout"){
             steps{
