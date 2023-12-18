@@ -6,16 +6,16 @@ pipeline {
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'Boss', url: 'https://github.com/georgesb1/SecDevOps.git']])
             }
         }
-        stage("Test"){
+        stage("CheckSecret"){
             steps{
-                echo 'I should Put certains phase of Test here'
+                sh 'rm trufflehog || true'
+                sh 'docker run gesellix/trufflehog --json https://github.com/cehkunal/webapp.git > trufflehog'
+                sh 'cat trufflehog'
             }
         }
         stage("Build"){
             steps{
                 git branch: 'main', credentialsId: 'Boss', url: 'https://github.com/georgesb1/SecDevOps.git'
-                sh 'pip install -r requirements.txt'
-                sh 'nohup uvicorn main:app --host 0.0.0.0 --port 8000 > app.log 2>&1 &'
             }
         }
     }
