@@ -13,9 +13,32 @@ pipeline {
                 sh 'cat trufflehog'
             }
         }
+        
+        stage("Source Composition Analysis"){
+            steps{
+                sh ' rm Owasp* || true'
+                sh ' wget https://raw.githubusercontent.com/georgesb1/SecDevOps/main/Owasp-dependency-check.sh '
+                sh 'chmod +x Owasp-dependency-check.sh'
+                sh 'bash Owasp-dependency-check.sh'
+                sh 'cat /home/kali/OWASP-Dependency-Check/reports/dependency-check-report.xml'
+            }
+        }
+
+        stage("Static APT"){
+            steps{
+                sh 'echo "something is cooking" '
+            }
+        }
+
         stage("Build"){
             steps{
                 git branch: 'main', credentialsId: 'Boss', url: 'https://github.com/georgesb1/SecDevOps.git'
+            }
+        }
+
+        stage("Dynamic APT"){
+            steps{
+                sh ' echo "Even here something is cooking"  '
             }
         }
     }
