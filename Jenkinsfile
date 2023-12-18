@@ -24,15 +24,12 @@ pipeline {
             }
         }
 
-        stage("Static APT"){
-            steps{
-                sh 'echo "something is cooking" '
-                def scannerHome = tool 'sonar-scanner';
-                withSonarQubeEnv() {
-                sh "${scannerHome}/bin/sonar-scanner"
-                }
-            }
+        stage('SonarQube Analysis') {
+            def scannerHome = tool 'SonarScanner';
+            withSonarQubeEnv() {
+            sh "${scannerHome}/bin/sonar-scanner"
         }
+    }
 
         stage("Build"){
             steps{
