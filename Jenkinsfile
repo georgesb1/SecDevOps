@@ -24,7 +24,7 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
+        stage('SAST with SonarQube ') {
             steps {
                 script {
                     def scannerHome = tool 'sonar-scanner'
@@ -41,7 +41,7 @@ pipeline {
             }
         }
 
-        stage("Dynamic APT"){
+        stage("DAST with OWASP ZAP"){
             steps{
                 sh ' echo "Even here something is cooking"  '
             }
