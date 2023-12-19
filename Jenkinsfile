@@ -38,7 +38,7 @@ pipeline {
         stage("Build") {
             steps {
                 script {
-                    sh ' echo ${BUILD-NUMBER}'
+                    sh ' echo ${BUILD_NUMBER}'
                     //sh 'docker rmi core.harbor.domain:32331/registry/${imageTag} || true'
                     //sh 'docker build -t ${imageTag} .'
                     //sh "docker tag ${imageTag} core.harbor.domain:32331/registry/${imageTag}"
