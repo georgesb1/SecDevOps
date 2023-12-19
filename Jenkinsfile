@@ -39,10 +39,9 @@ pipeline {
             steps {
                 script {
                     sh ' echo ${BUILD_NUMBER}'
-                    //sh 'docker rmi core.harbor.domain:32331/registry/${imageTag} || true'
-                    //sh 'docker build -t ${imageTag} .'
-                    //sh "docker tag ${imageTag} core.harbor.domain:32331/registry/${imageTag}"
-                   // sh "docker push core.harbor.domain:32331/registry/${imageTag}"
+                    sh 'docker build -t chatbot:${BUILD_NUMBER} .'
+                    sh "docker tag chatbot:${BUILD_NUMBER} core.harbor.domain:32331/registry/chatbot:${BUILD_NUMBER}"
+                    sh "docker push core.harbor.domain:32331/registry/chatbot:${BUILD_NUMBER}"
         }
     }
 }
