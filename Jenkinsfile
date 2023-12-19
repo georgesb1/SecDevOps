@@ -38,12 +38,15 @@ pipeline {
         stage("Build"){
             steps{
                 git branch: 'main', credentialsId: 'Boss', url: 'https://github.com/georgesb1/SecDevOps.git'
+                sh 'cat Dockerfile '
+                sh ' docker build -t Chatbot .'
             }
         }
 
         stage("DAST with OWASP ZAP"){
             steps{
-                sh ' echo "Even here something is cooking"  '
+                sh ' rm report.xml || true'
+                sh ' echo yes '
             }
         }
     }
