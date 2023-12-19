@@ -38,14 +38,21 @@ pipeline {
         stage("Build") {
             steps {
                 script {
-                    sh ' echo ${BUILD_NUMBER}'
-                    sh 'docker build -t chatbot:${BUILD_NUMBER} .'
-                    sh ' docker login https://core.harbor.domain:32331/ -u admin -p Kali0000'
+                    def harborPassword = credentials('harbor')
+
+                    sh "echo ${BUILD_NUMBER}"
+                    sh "docker build -t chatbot:${BUILD_NUMBER} ."
+
+                    // Use the credentials for Docker login
+                    withCredentials([string(credentialsId: 'harbor', variable: 'HARBOR_PASSWORD')]) {
+                        sh "docker login https://core.harbor.domain:32331/ -u admin -p ${HARBOR_PASSWORD}"
+                    }
+
                     sh "docker tag chatbot:${BUILD_NUMBER} core.harbor.domain:32331/registry/chatbot:${BUILD_NUMBER}"
                     sh "docker push core.harbor.domain:32331/registry/chatbot:${BUILD_NUMBER}"
+                }
+            }
         }
-    }
-}
 
 
         stage("DAST with OWASP ZAP"){
