@@ -14,7 +14,7 @@ if [ ! -d "$DATA_DIRECTORY" ]; then
 fi
 
 # Make sure we are using the latest version
-docker pull owasp/dependency-check
+docker pull owasp/dependency-check:latest
 
 docker run --rm \
     --volume $(pwd):/src \
