@@ -39,10 +39,11 @@ pipeline {
             steps {
                 script {
                     def imageTag = "chatbot:${BUILD_NUMBER}"  
-                    sh 'docker rmi core.harbor.domain:32331/registry/${imageTag} || true'
-                    sh 'docker build -t ${imageTag} .'
-                    sh "docker tag ${imageTag} core.harbor.domain:32331/registry/${imageTag}"
-                    sh "docker push core.harbor.domain:32331/registry/${imageTag}"
+                    sh' echo ${imageTag}'
+                    //sh 'docker rmi core.harbor.domain:32331/registry/${imageTag} || true'
+                    //sh 'docker build -t ${imageTag} .'
+                    //sh "docker tag ${imageTag} core.harbor.domain:32331/registry/${imageTag}"
+                   // sh "docker push core.harbor.domain:32331/registry/${imageTag}"
         }
     }
 }
