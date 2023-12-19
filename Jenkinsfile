@@ -39,17 +39,14 @@ pipeline {
             steps {
                 script {
                     def harborPassword = credentials('harbor')
-
                     sh "echo ${BUILD_NUMBER}"
                     sh "docker build -t chatbot:${BUILD_NUMBER} ."
-
                     // Use the credentials for Docker login
                     withCredentials([string(credentialsId: 'harbor', variable: 'HARBOR_PASSWORD')]) {
                         sh "docker login https://core.harbor.domain:32331/ -u admin -p ${HARBOR_PASSWORD}"
                     }
-
-                    sh "docker tag chatbot:${BUILD_NUMBER} core.harbor.domain:32331/registry/chatbot:${BUILD_NUMBER}"
-                    sh "docker push core.harbor.domain:32331/registry/chatbot:${BUILD_NUMBER}"
+                   // sh "docker tag chatbot:${BUILD_NUMBER} core.harbor.domain:32331/registry/chatbot:${BUILD_NUMBER}"
+                   // sh "docker push core.harbor.domain:32331/registry/chatbot:${BUILD_NUMBER}"
                 }
             }
         }
@@ -61,5 +58,14 @@ pipeline {
                 sh ' echo yes '
             }
         }
+
+        stage("Deploy on kubernetes"){
+            steps{
+                sh ' kubectl  -f apply https://raw.githubusercontent.com/georgesb1/SecDevOps/main/manifest.yaml'
+                sh ' echo yes '
+            }
+        }
+
+
     }
 }
