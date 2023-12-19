@@ -24,22 +24,21 @@ pipeline {
             }
         }
 
-        stage('SAST with SonarQube ') {
-            steps {
-                script {
-                    def scannerHome = tool 'sonar-scanner'
-                    withSonarQubeEnv('Sonarqube') {
-                        sh "${scannerHome}/bin/sonar-scanner"
-                    }
-                }
-            }
-        }
+       // stage('SAST with SonarQube ') {
+         //   steps {
+           //     script {
+             //       def scannerHome = tool 'sonar-scanner'
+               //     withSonarQubeEnv('Sonarqube') {
+                 //       sh "${scannerHome}/bin/sonar-scanner"
+                   // }
+               // }
+           // }
+       // }
 
         stage("Build"){
             steps{
-                git branch: 'main', credentialsId: 'Boss', url: 'https://github.com/georgesb1/SecDevOps.git'
                 sh 'cat Dockerfile '
-                sh ' docker build -t Chatbot .'
+                sh 'docker build -t Chatbot .'
             }
         }
 
