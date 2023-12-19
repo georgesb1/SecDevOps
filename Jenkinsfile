@@ -61,7 +61,7 @@ pipeline {
 
         stage("Deploy on kubernetes"){
             steps{
-                sh ' kubectl  -f apply https://raw.githubusercontent.com/georgesb1/SecDevOps/main/manifest.yaml'
+                sh ' kubectl  apply -f https://raw.githubusercontent.com/georgesb1/SecDevOps/main/manifest.yaml'
                 sh ' echo yes '
             }
         }
