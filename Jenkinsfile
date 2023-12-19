@@ -40,6 +40,7 @@ pipeline {
                 script {
                     sh ' echo ${BUILD_NUMBER}'
                     sh 'docker build -t chatbot:${BUILD_NUMBER} .'
+                    sh ' docker login https://core.harbor.domain:32331/ -u admin -p Kali0000'
                     sh "docker tag chatbot:${BUILD_NUMBER} core.harbor.domain:32331/registry/chatbot:${BUILD_NUMBER}"
                     sh "docker push core.harbor.domain:32331/registry/chatbot:${BUILD_NUMBER}"
         }
