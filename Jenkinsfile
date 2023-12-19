@@ -38,9 +38,7 @@ pipeline {
         stage("Build") {
             steps {
                 script {
-                    def timestamp = new Date().format("yyyyMMdd-HHmmss")
-                    def imageTag = "chatbot:${timestamp}"
-                    sh'echo ${timestamp}'
+                    sh ' echo $BUILD-NUMBER'
                     //sh 'docker rmi core.harbor.domain:32331/registry/${imageTag} || true'
                     //sh 'docker build -t ${imageTag} .'
                     //sh "docker tag ${imageTag} core.harbor.domain:32331/registry/${imageTag}"
