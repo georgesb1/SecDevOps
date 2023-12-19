@@ -38,7 +38,7 @@ pipeline {
         stage("Build"){
             steps{
                 sh 'cat Dockerfile '
-                sh 'docker build -t Chatbot .'
+                sh 'docker build -t chatbot .'
             }
         }
 
