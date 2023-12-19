@@ -37,10 +37,11 @@ pipeline {
 
         stage("Build"){
             steps{
-                sh 'docker rmi core.harbor.domain:32331/registry/chatbot || true'
-                sh 'docker build -t chatbot .'
-                sh 'docker tag chatbot core.harbor.domain:32331/registry/chatbot'
-                sh 'docker push core.harbor.domain:32331/registry/chatbot'
+                def imageTag = "chatbot:${BUILD_NUMBER}"  
+                    sh 'docker rmi core.harbor.domain:32331/registry/chatbot || true'
+                    sh 'docker build -t chatbot .'
+                    sh "docker tag chatbot core.harbor.domain:32331/registry/${imageTag}"
+                    sh "docker push core.harbor.domain:32331/registry/${imageTag}"
             }
         }
 
