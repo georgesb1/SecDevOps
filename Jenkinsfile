@@ -37,8 +37,10 @@ pipeline {
 
         stage("Build"){
             steps{
-                sh 'cat Dockerfile '
+                sh 'docker rmi core.harbor.domain:32331/registry/chatbot || true'
                 sh 'docker build -t chatbot .'
+                sh 'docker tag chatbot core.harbor.domain:32331/registry/chatbot'
+                sh 'docker push core.harbor.domain:32331/registry/chatbot'
             }
         }
 
