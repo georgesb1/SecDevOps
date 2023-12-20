@@ -46,7 +46,7 @@ pipeline {
                         sh "docker login https://core.harbor.domain:30609/ -u admin -p ${HARBOR_PASSWORD}"
                     }
                    // sh "docker tag chatbot:${BUILD_NUMBER} core.harbor.domain:32331/registry/chatbot:${BUILD_NUMBER}"
-                   // sh "docker push core.harbor.domain:32331/registry/chatbot:${BUILD_NUMBER}"
+                   // sh "docker push core.harbor.domain:30609/myregistry/chatbot:${BUILD_NUMBER}"
                 }
             }
         }
@@ -61,8 +61,7 @@ pipeline {
 
         stage("Deploy on kubernetes"){
             steps{
-                sh ' wget https://raw.githubusercontent.com/georgesb1/SecDevOps/main/manifest.yaml'
-                sh ' kubectl apply -f manifest.yaml'
+                sh ' kubectl apply -f https://raw.githubusercontent.com/georgesb1/SecDevOps/main/manifest.yaml'
             }
         }
 
