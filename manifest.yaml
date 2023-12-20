@@ -17,6 +17,7 @@ spec:
       - name: chatbot
         image: core.harbor.domain:30609/myregistry/chatbot
         imagePullPolicy: Always
+        ports:
         - containerPort: 8000
 ---
 apiVersion: v1
