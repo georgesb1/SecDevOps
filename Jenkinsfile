@@ -29,6 +29,8 @@ pipeline {
                 script {
 
                     def scannerHome = tool 'sonar-scanner'
+                    sh' docker stop sonarqube || true '
+                    sh' docker rm sonarqube || true'
                     sh' docker run -d --name sonarqube -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true -p 9000:9000 sonarqube:latest'
                     withSonarQubeEnv('Sonarqube') {
                         sh "${scannerHome}/bin/sonar-scanner"
