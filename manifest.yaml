@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: chatbot
-        image: core.harbor.domain:30609/myregistry/chatbot
+        image: core.harbor.domain:30609/myregistry/chatbot:148
         imagePullPolicy: Always
         ports:
         - containerPort: 8000
