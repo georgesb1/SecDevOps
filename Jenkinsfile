@@ -16,7 +16,7 @@ pipeline {
         
         stage("Source Composition Analysis"){
             steps{
-               // sh ' rm Owasp* || true'
+               sh ' rm Owasp* || true'
                 //sh ' wget https://raw.githubusercontent.com/georgesb1/SecDevOps/main/Owasp-dependency-check.sh '
                 //sh 'chmod +x Owasp-dependency-check.sh'
                 //sh 'bash Owasp-dependency-check.sh'
