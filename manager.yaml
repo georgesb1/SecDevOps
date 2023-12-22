@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: manager-bot
+  labels:
+    app: curl
+    class: admin
+spec:
+  containers:
+  - name: curl-c1
+    image: curlimages/curl:latest
+    command: ["sleep", "infinity"]
