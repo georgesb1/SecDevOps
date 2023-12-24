@@ -3,7 +3,6 @@ kind: Pod
 metadata:
   name: manager-bot
   labels:
-    app: curl
     class: admin
 spec:
   containers:

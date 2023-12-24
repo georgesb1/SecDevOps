@@ -1,0 +1,17 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: access-user
+spec:
+  description: "L3/L4 policy"
+  endpointSelector:
+    matchLabels:
+      app: chatbot
+  ingress:
+  - fromEndpoints:
+    - matchLabels:
+        class: admin
+    toPorts:
+    - ports:
+      - port: "8000"
+        protocol: TCP

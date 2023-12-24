@@ -3,10 +3,9 @@ kind: Pod
 metadata:
   name: user-bot
   labels:
-    app: curl
     class: user
 spec:
   containers:
-  - name: curl-c1
+  - name: curl-c2
     image: curlimages/curl:latest
     command: ["sleep", "infinity"]
