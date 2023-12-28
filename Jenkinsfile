@@ -45,8 +45,8 @@ pipeline {
                      sh "echo ${BUILD_NUMBER}"
                      sh "docker build -t chatbot:${BUILD_NUMBER} ."
                      withCredentials([string(credentialsId: 'harbor', variable: 'HARBOR_PASSWORD')]) {
-                         sh "docker login https://core.harbor.domain:31089 / -u admin -p ${HARBOR_PASSWORD}"
-                     }
+                        sh "docker login https://core.harbor.domain:31089 / -u admin -p ${harborPassword}"
+                        }
                      sh "docker tag chatbot:${BUILD_NUMBER} core.harbor.domain:30609/myregistry/chatbot:${BUILD_NUMBER}"
                      sh "docker push core.harbor.domain:31089/myregistry/chatbot:${BUILD_NUMBER}"
                  }
