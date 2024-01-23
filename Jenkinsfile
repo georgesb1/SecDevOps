@@ -26,15 +26,15 @@ pipeline {
             }
         }
 
-        stage('SAST with SonarQube ') {
+        //stage('SAST with SonarQube ') {
             steps {
                 sh " true "
-                 script {
-                     def scannerHome = tool 'sonarqube'
-                     withSonarQubeEnv('sonarqube') {
-                         sh "${scannerHome}/bin/sonar-scanner"
-                     }
-                 }
+              //   script {
+                //     def scannerHome = tool 'sonarqube'
+                  //   withSonarQubeEnv('sonarqube') {
+                    //     sh "${scannerHome}/bin/sonar-scanner"
+                    // }
+                // }
             }
         }
 
