@@ -27,8 +27,6 @@ pipeline {
         }
 
         stage('SAST with SonarQube ') {
-            // the name you have given the JDK installation in Global Tool Configuration
-    }
             steps {
                 sh " true "
                  script {
