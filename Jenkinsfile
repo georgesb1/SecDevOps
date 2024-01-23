@@ -26,7 +26,7 @@ pipeline {
             }
         }
 
-        //stage('SAST with SonarQube ') {
+        stage('SAST with SonarQube ') {
             steps {
                 sh " true "
               //   script {
