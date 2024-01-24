@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: chatbot
-        image: core.harbor.domain:31089/myregistry/chatbot:9
+        image: core.harbor.domain:31089/myregistry/chatbot:latest
         imagePullPolicy: Always
 ---
 apiVersion: v1
