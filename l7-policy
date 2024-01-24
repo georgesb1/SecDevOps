@@ -1,7 +1,7 @@
 apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
-  name: access-user
+  name: admin-only-submit-feedback
 spec:
   description: "L7 policy"
   endpointSelector:
