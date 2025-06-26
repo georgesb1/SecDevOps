@@ -9,3 +9,4 @@ spacy-legacy==3.0.12
 spacy-loggers==1.0.5
 SQLAlchemy==1.4.50
 uvicorn==0.24.0.post1
+urllib3>=2.5.0 # not directly required, pinned by Snyk to avoid a vulnerability
